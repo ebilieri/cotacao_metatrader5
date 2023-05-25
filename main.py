@@ -40,11 +40,12 @@ while True:
         print(f"Valor compra: {tick_mt5.ask}")
         print(f"Valor venda: {tick_mt5.bid}")
         print(f"{datetime.today().isoformat()}-----------------")
+        print("")
 
         if tick_mt5.bid > 0:
             # Minima === COMPRA
             if tick_mt5.bid <= minima6m:
-                email.envia_email(ticker=ticker, valor_projetado=maxima, valor_atual=tick_mt5.bid, operacao=compra)
+                email.envia_email(ticker=ticker, valor_projetado=minima6m, valor_atual=tick_mt5.bid, operacao=compra)
 
             # Maxima === VENDA
             if tick_mt5.bid >= maxima:
@@ -55,7 +56,7 @@ while True:
     print("         ===================================")  
     print("                 ==================")  
     print("                         =      ")  
-    time.sleep(5)
+    time.sleep(10)
 
 
 

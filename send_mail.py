@@ -22,7 +22,7 @@ class EnviaEmail:
         
         {operacao} 
         
-        Valor ultima Maxima Invest {valor_projetado}
+        Valor Invest projetado {valor_projetado}
         
         O ativo {ticker} chegou no preço de {operacao} {valor_atual}
 
