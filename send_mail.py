@@ -1,14 +1,11 @@
 import smtplib
 from email.message import EmailMessage
 import os
-from dotenv import load_dotenv
 from datetime import datetime
 
 class EnviaEmail:
     
-    load_dotenv()
-
-
+    
     def envia_email(self, ticker: str, valor_projetado: str, valor_atual: str, operacao: str) -> None:
         senha = os.environ.get("senha_email")
         email_from = os.environ.get("email")

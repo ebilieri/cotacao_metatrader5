@@ -1,12 +1,17 @@
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 import pandas as pd
 import MetaTrader5 as mt5
 import time
 
 from send_mail import EnviaEmail
 
+load_dotenv()
+
 compra = "COMPRA"
 venda = "VENDA"
+planilha_ativos = os.environ.get("planilha_ativos")
 # instanciar Email
 email = EnviaEmail()
 
