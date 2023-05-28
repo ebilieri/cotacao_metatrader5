@@ -26,7 +26,7 @@ print(len(simbolos))
 
 
 # carregar ativos monitorados
-df = pd.read_excel("ativos.xlsx")
+df = pd.read_excel(planilha_ativos)
 
 while True:
     for row in df.iterrows():
