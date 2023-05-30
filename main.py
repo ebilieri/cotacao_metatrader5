@@ -41,19 +41,19 @@ while True:
         mt5.symbol_select(ticker)
         # carregar dados do ticker
         tick_mt5 = mt5.symbol_info_tick(ticker)
-        print(f"Fechamento: {tick_mt5.last}")
+        print(f"Ultimo: {tick_mt5.last}")
         print(f"Valor compra: {tick_mt5.ask}")
         print(f"Valor venda: {tick_mt5.bid}")
         print(f"{datetime.today().isoformat()}-----------------")
         print("")
 
-        if tick_mt5.bid > 0:
+        if tick_mt5.last > 0:
             # Minima === COMPRA
-            if tick_mt5.bid <= minima6m:
+            if tick_mt5.last <= minima6m:
                 email.envia_email(ticker=ticker, valor_projetado=minima6m, valor_atual=tick_mt5.bid, operacao=compra)
 
             # Maxima === VENDA
-            if tick_mt5.bid >= maxima:
+            if tick_mt5.last >= maxima:
                 email.envia_email(ticker=ticker, valor_projetado=maxima, valor_atual=tick_mt5.bid, operacao=venda)
 
     # pausa em segundos  
