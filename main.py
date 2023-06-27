@@ -76,7 +76,7 @@ while True:
     print("         ===================================")  
     print("                 ==================")  
     print("                         =      ")  
-    time.sleep(10)
+    time.sleep(20)
 
 
 
