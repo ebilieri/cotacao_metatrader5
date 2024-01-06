@@ -38,12 +38,15 @@ while True:
     date_end = datetime(datetime.now().year,
                           datetime.now().month,
                           datetime.now().day,
-                          17, 30, 0)
+                          23, 30, 0)
     
     if date_now >= date_start and date_now <= date_end:
+        lis_items_ativos_compra = []
+        lis_items_ativos_venda = []
         for row in df.iterrows():
             print(f"{row[1]['Ticker']} - Minima 6M {row[1]['Minima6']} - Maxima {row[1]['Maxima']}")
 
+            item_ativo = dict()
             # valores informados na planilha
             ticker = row[1]['Ticker']
             minima6m = row[1]['Minima6']
@@ -64,11 +67,24 @@ while True:
                 if tick_mt5.last > 0:
                     # Minima === COMPRA
                     if tick_mt5.last <= minima6m:
-                        email.envia_email(ticker=ticker, valor_projetado=minima6m, valor_atual=tick_mt5.bid, operacao=compra)
+                        item_ativo["ticker"] = ticker
+                        item_ativo["valor_projetado"] = minima6m
+                        item_ativo["valor_atual"] = tick_mt5.bid
+                        item_ativo["operacao"] = compra
+                        lis_items_ativos_compra.append(item_ativo)
 
                     # Maxima === VENDA
                     if tick_mt5.last >= maxima:
-                        email.envia_email(ticker=ticker, valor_projetado=maxima, valor_atual=tick_mt5.bid, operacao=venda)
+                        item_ativo["ticker"] = ticker
+                        item_ativo["valor_projetado"] = maxima
+                        item_ativo["valor_atual"] = tick_mt5.bid
+                        item_ativo["operacao"] = venda
+                        lis_items_ativos_venda.append(item_ativo)                        
+
+                    
+        email.envia_email(lis_items_ativos_compra, compra)
+        email.envia_email(lis_items_ativos_venda, venda)
+
 
     # pausa em segundos  
     print("=======================================================")  
