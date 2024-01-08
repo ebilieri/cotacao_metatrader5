@@ -34,11 +34,11 @@ while True:
     date_start = datetime(datetime.now().year,
                           datetime.now().month,
                           datetime.now().day,
-                          9, 55, 0)
+                          9, 55, 0) # Horario inicio negociaçoes
     date_end = datetime(datetime.now().year,
                           datetime.now().month,
                           datetime.now().day,
-                          23, 30, 0)
+                          17, 30, 0) # Horario encerramento negociaçoes
     
     if date_now >= date_start and date_now <= date_end:
         lis_items_ativos_compra = []
