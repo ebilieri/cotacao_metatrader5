@@ -64,7 +64,7 @@ while True:
                 print(f"{datetime.today().isoformat()}-----------------")
                 print("")
 
-                if tick_mt5.last > 0:
+                if tick_mt5.last > 0 and tick_mt5.bid > 0:
                     # Minima === COMPRA
                     if tick_mt5.last <= minima6m:
                         item_ativo["ticker"] = ticker
